@@ -1,5 +1,7 @@
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+import { Box } from "../components/Box.tsx";
+import { MouseTracker } from "../islands/MouseTracker.tsx";
 
 export default function Home() {
   const count = useSignal(3);
@@ -19,6 +21,45 @@ export default function Home() {
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
         <Counter count={count} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "70%",
+          }}
+        >
+          <MouseTracker />
+          <MouseTracker />
+          <MouseTracker />
+          <MouseTracker />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "70%",
+          }}
+        >
+          <MouseTracker />
+          <MouseTracker />
+          <MouseTracker />
+          <MouseTracker />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            width: "70%",
+          }}
+        >
+          <MouseTracker />
+          <MouseTracker />
+          <MouseTracker />
+          <MouseTracker />
+        </div>
       </div>
     </div>
   );
