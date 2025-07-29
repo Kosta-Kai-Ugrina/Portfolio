@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import { type FC } from "react";
 import { Box } from "../Box/Box";
 import mugshot from "../../../assets/mugshot.png";
 import "./TitleBox.css";

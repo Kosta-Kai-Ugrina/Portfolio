@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, type FC, useState } from "react";
+import { useRef, useEffect, type FC, useState } from "react";
 import type { Particle, Position } from "../../model/Particle";
 import "./Universe.css";
 
@@ -6,8 +6,9 @@ const PARTICLE_COUNT = 1400;
 const MILLISECONDS_PER_SECOND = 1000;
 const REFRESH_RATE = 40;
 const FORCE_BASE_MULTIPLIER = 0.01;
-const VELOCITY_BASE_MULTIPLIER = 0.3;
+const VELOCITY_BASE_MULTIPLIER = 0.05;
 const MAX_DISTANCE_DIFF = 100;
+const COLORS = ["#222", "#444", "#666"];
 
 export const Universe: FC = () => {
   const [dimensions, setDimensions] = useState<Position>({
@@ -103,25 +104,17 @@ function updateParticlePositions(
   dimens: Position
 ): Particle[] {
   const attractionRules: ((particles: Particle[]) => Particle[])[] = [
-    (p) => applyAttractionToParticles(p, "#222", "#222", -10, dimens),
-    (p) => applyAttractionToParticles(p, "#222", "#444", 3, dimens),
-    (p) => applyAttractionToParticles(p, "#222", "#666", 5, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[0], COLORS[0], -10, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[0], COLORS[1], 3, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[0], COLORS[2], 5, dimens),
 
-    (p) => applyAttractionToParticles(p, "#444", "#444", -10, dimens),
-    (p) => applyAttractionToParticles(p, "#444", "#222", 5, dimens),
-    (p) => applyAttractionToParticles(p, "#444", "#666", 1, dimens),
-    (p) => applyAttractionToParticles(p, "#444", "white", 5, dimens),
-    (p) => applyAttractionToParticles(p, "#444", "green", 0, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[1], COLORS[1], -10, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[1], COLORS[0], 5, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[1], COLORS[2], 1, dimens),
 
-    (p) => applyAttractionToParticles(p, "#666", "#666", 1, dimens),
-    (p) => applyAttractionToParticles(p, "#666", "#222", 5, dimens),
-    (p) => applyAttractionToParticles(p, "#666", "#444", 5, dimens),
-
-    (p) => applyAttractionToParticles(p, "white", "white", -8, dimens),
-    (p) => applyAttractionToParticles(p, "white", "#444", 0, dimens),
-    (p) => applyAttractionToParticles(p, "white", "#222", 2, dimens),
-
-    (p) => applyAttractionToParticles(p, "green", "#222", -2, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[2], COLORS[2], 1, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[2], COLORS[0], 5, dimens),
+    (p) => applyAttractionToParticles(p, COLORS[2], COLORS[1], 5, dimens),
   ];
 
   for (const applyAttractionRule of attractionRules) {
@@ -130,13 +123,8 @@ function updateParticlePositions(
   return [...particles];
 }
 
+const getRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
 const getRandomPosition = (dimension: number) => Math.random() * dimension + 25;
-const getRandomVelocity = (dimension: number) =>
-  ((Math.random() - 0.5) * dimension) / 600;
-// const colorPossibilites = ["green", "red", "yellow", "white"];
-const colorPossibilites = ["#222", "#444", "#666"];
-const getRandomColor = () =>
-  colorPossibilites[Math.floor(Math.random() * colorPossibilites.length)];
 
 function applyAttractionToParticles(
   particles: Particle[],
@@ -167,9 +155,6 @@ function applyAttractionToParticles(
         forceY += force * diffY;
       }
     }
-    // console.log(
-    //   `${idxA} BEFORE POS{x: ${particleA.position.x} y:${particleA.position.y}} VEL{x: ${particleA.velocity.x} y:${particleA.velocity.y}}`
-    // );
     particleA.velocity.x += forceX * VELOCITY_BASE_MULTIPLIER;
     particleA.velocity.y += forceY * VELOCITY_BASE_MULTIPLIER;
     particleA.position.x += particleA.velocity.x;
@@ -180,9 +165,6 @@ function applyAttractionToParticles(
     if (particleA.position.y <= 0 || particleA.position.y >= screenLimit.y) {
       particleA.velocity.y *= -0.9;
     }
-    // console.log(
-    //   `${idxA} AFTER POS{x: ${particleA.position.x} y:${particleA.position.y}} VEL{x: ${particleA.velocity.x} y:${particleA.velocity.y}}`
-    // );
   }
 
   return particles;

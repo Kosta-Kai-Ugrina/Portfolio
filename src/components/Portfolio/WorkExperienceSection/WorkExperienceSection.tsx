@@ -1,4 +1,4 @@
-import React, { type FC, type PropsWithChildren } from "react";
+import { type FC, type PropsWithChildren } from "react";
 import { FlexRow } from "../../FlexRow/FlexRow";
 import "./WorkExperienceSection.css";
 import { Divider } from "@mui/material";

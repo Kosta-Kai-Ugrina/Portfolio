@@ -1,5 +1,5 @@
 import { Divider } from "@mui/material";
-import React, { type FC, type PropsWithChildren } from "react";
+import { type FC, type PropsWithChildren } from "react";
 import "./EducationSection.css";
 
 type Props = {

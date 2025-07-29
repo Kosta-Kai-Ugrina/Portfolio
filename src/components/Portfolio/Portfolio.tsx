@@ -1,5 +1,5 @@
 import { Box } from "./Box/Box";
-import React, { type FC } from "react";
+import { type FC } from "react";
 import { TitleBox } from "./TitleBox/TitleBox";
 import { Grid } from "@mui/material";
 import linkedInIcon from "../../assets/linkedin-icon.png";
