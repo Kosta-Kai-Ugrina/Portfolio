@@ -1,0 +1,14 @@
+.Mugshot {
+  height: 150px;
+  border-radius: 50%;
+  border: solid 5px black;
+}
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Optional: vertically center the text and image */
+  justify-content: flex-start; /* Ensures content is aligned left */
+  text-align: left;
+  gap: 1rem; /* Adds spacing between image and text */
+}

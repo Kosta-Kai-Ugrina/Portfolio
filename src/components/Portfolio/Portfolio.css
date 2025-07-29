@@ -1,0 +1,12 @@
+.PortfolioContainer {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 1024px) {
+  .PortfolioContainer {
+    width: 60vw;
+  }
+}

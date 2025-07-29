@@ -1,0 +1,39 @@
+body {
+  font-size: 19px;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  padding: 0;
+  margin: 5px 0;
+}
+
+h2 {
+  font-size: 30px;
+  padding: 0;
+  margin: 5px 0 20px 0;
+}
+
+h3 {
+  font-size: 25px;
+  padding: 0;
+  margin: 0;
+  align-self: center;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #008;
+
+  text-decoration: none;
+}
+
+a:hover {
+  color: #55f;
+  text-decoration: none;
+}
